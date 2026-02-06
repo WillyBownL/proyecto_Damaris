@@ -70,111 +70,32 @@ export default function LandingPage() {
         </div>
       </header>
 
-      <main>
+      <main className="page-main">
         <section id="hero" className="hero">
-          <div className="container hero-content">
-            <div className="hero-text">
-              <p className="eyebrow">Estampados e impresiones</p>
-              <h1>
-                Impulsamos tu marca con prendas y piezas que se ven y se sienten
-                increibles.
-              </h1>
-              <p className="lead">
-                Somos especialistas en estampado textil, impresion digital y
-                personalizacion corporativa. Produccion rapida, acabados
-                premium y asesoria creativa para cada proyecto.
-              </p>
-              <div className="hero-actions">
-                <a className="btn btn-primary" href="#servicios">
-                  Ver servicios
-                </a>
-                <a className="btn btn-ghost" href="#portafolio">
-                  Ver portafolio
-                </a>
-              </div>
-              <div className="hero-metrics">
-                <div>
-                  <strong>+12</strong>
-                  <span>Años de experiencia</span>
-                </div>
-                <div>
-                  <strong>+850</strong>
-                  <span>Proyectos al año</span>
-                </div>
-                <div>
-                  <strong>48h</strong>
-                  <span>Entregas express</span>
-                </div>
-              </div>
-            </div>
-            <div className="hero-card">
-              <div className="card-top">
-                <span>Produccion 360</span>
-                <span>Calidad certificada</span>
-              </div>
-              <h3>Tu idea, nuestra impresion.</h3>
-              <p>
-                Desde una pieza unica hasta lotes grandes, acompanamos todo el
-                proceso: diseño, pruebas de color, seleccion de telas y
-                acabados.
-              </p>
-              <div className="card-list">
-                <div>
-                  <strong>Serigrafia</strong>
-                  <span>Textura y durabilidad</span>
-                </div>
-                <div>
-                  <strong>DTF y Sublimado</strong>
-                  <span>Color y detalle</span>
-                </div>
-                <div>
-                  <strong>Vinil y Bordado</strong>
-                  <span>Acabado premium</span>
-                </div>
-              </div>
-            </div>
+          <video
+            className="hero-video"
+            src="/hero_background.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          <div className="hero-overlay" aria-hidden="true"></div>
+          <div className="hero-logo">
+            <img src="/Logo.png" alt="Damaris Print" />
           </div>
         </section>
 
         <section id="quienes-somos" className="section about">
-          <div className="container about-grid">
-            <div>
-              <p className="eyebrow">Quien somos</p>
-              <h2>Un equipo creativo con enfoque en resultados.</h2>
-              <p className="lead">
-                En Damaris Print ayudamos a marcas, agencias y emprendedores a
-                transformar ideas en piezas tangibles. Nuestra combinacion de
-                tecnologia, talento y control de calidad asegura consistencia en
-                cada entrega.
-              </p>
-              <div className="about-highlights">
-                <div>
-                  <strong>Calidad</strong>
-                  <span>Colores fieles y telas seleccionadas.</span>
-                </div>
-                <div>
-                  <strong>Agilidad</strong>
-                  <span>Procesos claros y entregas a tiempo.</span>
-                </div>
-                <div>
-                  <strong>Asesoria</strong>
-                  <span>Acompanamiento desde el brief.</span>
-                </div>
-              </div>
-            </div>
-            <div className="about-panel">
-              <h3>Nuestro compromiso</h3>
-              <p>
-                Trabajamos con materiales responsables y proveedores locales
-                para reducir tiempos y huella ambiental. Cada proyecto incluye
-                pruebas de color y control final antes de la entrega.
-              </p>
-              <ul>
-                <li>Control de calidad en cada lote.</li>
-                <li>Prototipos rapidos para aprobacion.</li>
-                <li>Equipo tecnico dedicado.</li>
-              </ul>
-            </div>
+          <div className="container about-content">
+            <p className="eyebrow">Quien somos</p>
+            <h2>Un equipo creativo con enfoque en resultados.</h2>
+            <p className="lead">
+              En Damaris Print ayudamos a marcas, agencias y emprendedores a
+              transformar ideas en piezas tangibles. Nuestra combinacion de
+              tecnologia, talento y control de calidad asegura consistencia en
+              cada entrega.
+            </p>
           </div>
         </section>
 
@@ -227,61 +148,21 @@ export default function LandingPage() {
         </section>
 
         <section id="contacto" className="section contact">
-          <div className="container contact-grid">
-            <div>
-              <p className="eyebrow">Contacto</p>
-              <h2>Listos para tu siguiente proyecto.</h2>
-              <p className="lead">
-                Cuentanos el tipo de prenda, cantidades y fechas. Responderemos
-                en menos de 24 horas con una propuesta clara.
-              </p>
-              <div className="contact-info">
-                <div>
-                  <strong>Correo</strong>
-                  <span>ventas@damarisprint.com</span>
-                </div>
-                <div>
-                  <strong>Telefono</strong>
-                  <span>+57 310 000 0000</span>
-                </div>
-                <div>
-                  <strong>Direccion</strong>
-                  <span>Zona Industrial, Bogota</span>
-                </div>
-              </div>
+          <div className="container contact-map">
+            <p className="eyebrow">Contacto</p>
+            <h2>Encuentranos en nuestra ubicacion.</h2>
+            <div className="map-frame">
+              <iframe
+                title="Ubicacion Estampados Damaris"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3528.387346494521!2d-70.10515!3d-27.828623099999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96983732d9567f3b%3A0x90cad4848c3e0dcb!2sEstampados%20Damaris!5e0!3m2!1ses!2scl!4v1770387871880!5m2!1ses!2scl"
+                width="600"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
-            <form className="contact-form">
-              <label>
-                Nombre
-                <input name="name" type="text" placeholder="Tu nombre" />
-              </label>
-              <label>
-                Correo
-                <input name="email" type="email" placeholder="tucorreo@mail" />
-              </label>
-              <label>
-                Proyecto
-                <input
-                  name="project"
-                  type="text"
-                  placeholder="Camisetas, flyers, merch..."
-                />
-              </label>
-              <label>
-                Detalles
-                <textarea
-                  name="details"
-                  rows="4"
-                  placeholder="Cantidades, fecha, referencias"
-                />
-              </label>
-              <button className="btn btn-primary" type="submit">
-                Enviar solicitud
-              </button>
-              <p className="form-note">
-                Al enviar aceptas nuestra politica de tratamiento de datos.
-              </p>
-            </form>
           </div>
         </section>
       </main>
