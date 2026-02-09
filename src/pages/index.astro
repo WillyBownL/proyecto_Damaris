@@ -21,7 +21,7 @@ import "../styles/global.css";
 			<img class="preloader-logo" src="/Logo.png" alt="Damaris Print" />
 			<div class="preloader-spinner" aria-hidden="true"></div>
 		</div>
-		<LandingPage />
+		<LandingPage client:load />
 		<script>
 			const preloader = document.getElementById("preloader");
 			const startTime = Date.now();

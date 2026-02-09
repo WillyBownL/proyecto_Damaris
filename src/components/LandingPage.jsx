@@ -1,4 +1,5 @@
 import React from "react";
+import PortfolioSlider from "./PortfolioSlider.jsx";
 
 const services = [
   {
@@ -135,15 +136,7 @@ export default function LandingPage() {
                 marcas emergentes hasta campañas nacionales.
               </p>
             </div>
-            <div className="portfolio-grid">
-              {portfolioItems.map((item) => (
-                <article className="portfolio-card" key={item.title}>
-                  <div className="portfolio-badge">{item.label}</div>
-                  <h3>{item.title}</h3>
-                  <p>Produccion integral con acabados premium.</p>
-                </article>
-              ))}
-            </div>
+            <PortfolioSlider items={portfolioItems} />
           </div>
         </section>
 

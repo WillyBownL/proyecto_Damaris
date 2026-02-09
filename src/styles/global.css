@@ -355,12 +355,6 @@ img {
   background: var(--surface);
 }
 
-.portfolio-grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-}
-
 .portfolio-card {
   background: #ffffff;
   border-radius: 20px;
@@ -370,6 +364,23 @@ img {
   display: grid;
   gap: 0.75rem;
   position: relative;
+}
+
+.portfolio-swiper {
+  padding-bottom: 2.75rem;
+}
+
+.portfolio-swiper .swiper-slide {
+  height: auto;
+}
+
+.portfolio-swiper .swiper-pagination-bullet {
+  background: rgba(17, 24, 39, 0.25);
+  opacity: 1;
+}
+
+.portfolio-swiper .swiper-pagination-bullet-active {
+  background: var(--brand);
 }
 
 .portfolio-badge {
