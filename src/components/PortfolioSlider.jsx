@@ -32,17 +32,19 @@ export default function PortfolioSlider({ items }) {
       >
         {items.map((item) => (
           <SwiperSlide key={item.title}>
-            <article className="portfolio-card">
-              <button
-                type="button"
-                className="portfolio-image"
-                onClick={() => setActiveItem(item)}
-                aria-label={`Ver ${item.title}`}
-              >
-                <img src={item.image} alt={item.title} loading="lazy" />
-              </button>
-              <h3>{item.title}</h3>
-            </article>
+            <div className="portfolio-card-wrap">
+              <article className="portfolio-card">
+                <button
+                  type="button"
+                  className="portfolio-image"
+                  onClick={() => setActiveItem(item)}
+                  aria-label={`Ver ${item.title}`}
+                >
+                  <img src={item.image} alt={item.title} loading="lazy" />
+                </button>
+                <h3>{item.title}</h3>
+              </article>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

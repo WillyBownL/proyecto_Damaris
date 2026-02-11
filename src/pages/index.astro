@@ -1,11 +1,15 @@
 ---
 import LandingPage from "../components/LandingPage.jsx";
+import Preloader from "../components/layout/Preloader.jsx";
 import "../styles/global.css";
 ---
 
 <html lang="es">
 	<head>
 		<meta charset="utf-8" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
@@ -17,10 +21,7 @@ import "../styles/global.css";
 		<title>Damaris Print | Estampados e impresiones</title>
 	</head>
 	<body>
-		<div id="preloader" class="preloader" aria-hidden="true">
-			<img class="preloader-logo" src="/Logo.png" alt="Damaris Print" />
-			<div class="preloader-spinner" aria-hidden="true"></div>
-		</div>
+		<Preloader client:load />
 		<LandingPage client:load />
 		<script>
 			const preloader = document.getElementById("preloader");
