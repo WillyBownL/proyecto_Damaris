@@ -9,7 +9,6 @@ export default function PortfolioSection() {
         <div className="portfolio__header">
           <span className="portfolio__watermark" aria-hidden="true">Portafolio</span>
           <h2 className="portfolio__subtitle">Proyectos recientes que hablan por nosotros</h2>
-
         </div>
         <PortfolioSlider items={portfolioItems} />
       </div>

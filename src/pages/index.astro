@@ -12,7 +12,7 @@ import "../styles/global.css";
 		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<meta
 			name="description"
@@ -26,7 +26,7 @@ import "../styles/global.css";
 		<script>
 			const preloader = document.getElementById("preloader");
 			const startTime = Date.now();
-			const MIN_DURATION_MS = 1000;
+			const MIN_DURATION_MS = 1600;
 
 			const hidePreloader = () => {
 				if (!preloader) return;

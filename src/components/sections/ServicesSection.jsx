@@ -1,30 +1,28 @@
 import React from "react";
-import ServiceCard from "./ServiceCard.jsx";
-import { services } from "../../data/services.js";
+import ServicesCarousel from "./ServicesCarousel.jsx";
 
 export default function ServicesSection() {
   return (
     <section id="servicios" className="section services">
+      <div className="custom-shape-divider-top-1771257450">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M892.25 114.72L0 0 0 120 1200 120 1200 0 892.25 114.72z" className="shape-fill"></path>
+        </svg>
+      </div>
       <div className="container">
         <div className="section-header">
-          <div>
-            <p className="eyebrow">Servicios</p>
-            <h2>Soluciones completas de impresion y estampado.</h2>
+          <div className="services__header">
+            <span className="services__watermark" aria-hidden="true">Servicios</span>
+            <h2 className="services__subtitle">Soluciones completas de impresion y estampado.</h2>
           </div>
-          <p className="lead">
-            Atendemos proyectos de marketing, eventos y colecciones de moda
-            con equipos propios y procesos automatizados.
-          </p>
+          
         </div>
-        <div className="cards">
-          {services.map((service) => (
-            <ServiceCard
-              key={service.title}
-              title={service.title}
-              description={service.description}
-            />
-          ))}
-        </div>
+        <ServicesCarousel />
+      </div>
+      <div className="custom-shape-divider-bottom-1771257708" aria-hidden="true">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M892.25 114.72L0 0 0 120 1200 120 1200 0 892.25 114.72z" className="shape-fill"></path>
+        </svg>
       </div>
     </section>
   );

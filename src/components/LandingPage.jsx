@@ -6,6 +6,7 @@ import AboutSection from "./sections/AboutSection.jsx";
 import ServicesSection from "./sections/ServicesSection.jsx";
 import PortfolioSection from "./sections/PortfolioSection.jsx";
 import ContactSection from "./sections/ContactSection.jsx";
+import WhatsAppButton from "./WhatsAppButton.jsx";
 
 export default function LandingPage() {
   return (
@@ -19,6 +20,7 @@ export default function LandingPage() {
         <ContactSection />
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }
