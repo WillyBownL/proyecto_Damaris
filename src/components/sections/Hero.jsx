@@ -13,7 +13,6 @@ const SERVICES = [
   "Fotocopia",
   "Sublimado de tazas, poleras, y merchandising",
 ];
-const PHONE = "+56968957786";
 
 export default function Hero() {
   return (
@@ -39,7 +38,7 @@ export default function Hero() {
       </div>
       <div className="hero__content">
         <div className="hero__left">
-          <h1 className="hero__title">Estampados e Impresiones Damaris</h1>
+          <h1 className="hero__title">Estampados y Papeleria Creativa Damaris</h1>
           <p className="hero__slogan">Creamos todo lo que imaginas</p>
         </div>
         <div className="hero__right">
@@ -57,8 +56,8 @@ export default function Hero() {
           </div>
           <a
             className="hero__contact-btn"
-            href={`tel:${PHONE}`}
-            aria-label="Llamar a Damaris Print"
+            href="#contacto"
+            aria-label="Ir al área de contacto"
           >
             Contactar
           </a>

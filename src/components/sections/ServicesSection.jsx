@@ -12,8 +12,8 @@ export default function ServicesSection() {
       <div className="container">
         <div className="section-header">
           <div className="services__header">
-            <span className="services__watermark" aria-hidden="true">Servicios</span>
-            <h2 className="services__subtitle">Soluciones completas de impresion y estampado.</h2>
+            <h2 className="services__title">Servicios</h2>
+            <p className="services__subtitle">Soluciones completas de impresion y estampado.</p>
           </div>
           
         </div>

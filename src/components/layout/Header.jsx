@@ -7,18 +7,32 @@ const NAV_LINKS = [
   { href: "#contacto", label: "Contacto" },
 ];
 
+const NAVBAR_OFFSET = 100; // px desde el top para considerar sección "activa"
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeHash, setActiveHash] = useState("");
 
-  // Sincronizar link activo con el hash de la URL
+  // Scroll spy: resaltar el link según la sección visible en pantalla
   useEffect(() => {
-    const updateActiveHash = () => setActiveHash(window.location.hash);
+    const updateActiveFromScroll = () => {
+      const scrollY = window.scrollY + NAVBAR_OFFSET;
+      let current = "";
 
-    updateActiveHash();
-    window.addEventListener("hashchange", updateActiveHash);
+      for (const { href } of NAV_LINKS) {
+        const el = document.getElementById(href.slice(1));
+        if (el && el.offsetTop <= scrollY) {
+          current = href;
+        }
+      }
 
-    return () => window.removeEventListener("hashchange", updateActiveHash);
+      setActiveHash(current);
+    };
+
+    updateActiveFromScroll();
+    window.addEventListener("scroll", updateActiveFromScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", updateActiveFromScroll);
   }, []);
 
   // Bloquear scroll del body cuando el menú mobile está abierto

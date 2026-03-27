@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback, useRef, useLayoutEffect } from "react";
 import { servicesCarousel } from "../../data/servicesCarousel.js";
 
 const icons = {
@@ -53,23 +53,88 @@ const icons = {
   ),
 };
 
-function ServiceIconItem({ service }) {
+function ServiceIconItem({ service, isSelected, onClick }) {
   return (
-    <div className="services-carousel__item">
+    <button
+      type="button"
+      className={`services-carousel__item ${isSelected ? "services-carousel__item--selected" : ""}`}
+      onClick={onClick}
+      aria-pressed={isSelected}
+      aria-label={service.label}
+    >
       <div className="services-carousel__icon">{icons[service.id]}</div>
       <span className="services-carousel__label">{service.label}</span>
-    </div>
+    </button>
   );
 }
 
 export default function ServicesCarousel() {
+  const [selectedService, setSelectedService] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const containerRef = useRef(null);
+  const trackRef = useRef(null);
+
+  const handleSelect = useCallback((service, index) => {
+    if (selectedService?.id === service.id) {
+      setSelectedService(null);
+      return;
+    }
+    setSelectedService(service);
+    setSelectedIndex(index);
+  }, [selectedService?.id]);
+
+  const [centerTranslateX, setCenterTranslateX] = useState(0);
+
+  useLayoutEffect(() => {
+    if (selectedService && containerRef.current && trackRef.current) {
+      const centerItemIndex = 6 + selectedIndex;
+      const item = trackRef.current.children[centerItemIndex];
+      if (item) {
+        const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+        const containerCenter = containerRef.current.offsetWidth / 2;
+        setCenterTranslateX(containerCenter - itemCenter);
+      }
+    }
+  }, [selectedService, selectedIndex]);
+
   return (
-    <div className="services-carousel" aria-hidden="true">
-      <div className="services-carousel__track">
-        {[...servicesCarousel, ...servicesCarousel].map((service, index) => (
-          <ServiceIconItem key={`${service.id}-${index}`} service={service} />
-        ))}
+    <div className={`services-carousel ${selectedService ? "services-carousel--has-selection" : ""}`} ref={containerRef}>
+      <div
+        ref={trackRef}
+        className="services-carousel__track"
+        style={
+          selectedService
+            ? { transform: `translateX(${centerTranslateX}px)`, animation: "none", transition: "transform 0.4s ease" }
+            : undefined
+        }
+      >
+        {selectedService
+          ? [...servicesCarousel, ...servicesCarousel, ...servicesCarousel].map((service, index) => {
+              const logicalIndex = index % 6;
+              const isCenterCopy = index >= 6 && index < 12;
+              return (
+                <ServiceIconItem
+                  key={`${service.id}-${index}`}
+                  service={service}
+                  isSelected={selectedService?.id === service.id && isCenterCopy}
+                  onClick={() => handleSelect(service, logicalIndex)}
+                />
+              );
+            })
+          : [...servicesCarousel, ...servicesCarousel].map((service, index) => (
+              <ServiceIconItem
+                key={`${service.id}-${index}`}
+                service={service}
+                isSelected={false}
+                onClick={() => handleSelect(service, index % servicesCarousel.length)}
+              />
+            ))}
       </div>
+      {selectedService && (
+        <div className="services-carousel__description">
+          <p>{selectedService.description}</p>
+        </div>
+      )}
     </div>
   );
 }

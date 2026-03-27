@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   overflow-x: hidden;
@@ -474,7 +478,7 @@ img {
 
 .hero__title {
   font-family: "Bebas Neue", "Impact", sans-serif;
-  font-size: clamp(3.9rem, 7.8vw, 6.3rem);
+  font-size: clamp(3.51rem, 7.02vw, 5.67rem);
   font-weight: 400;
   letter-spacing: 0.02em;
   line-height: 1.05;
@@ -812,7 +816,7 @@ img {
   position: relative;
   background: var(--surface);
   color: var(--ink);
-  padding-top: 2rem;
+  padding-top: 0rem;
   padding-bottom: 3rem;
 }
 
@@ -905,50 +909,36 @@ img {
   }
 }
 
-/* Contenido texto: watermark + subtítulo solapados + párrafo */
+/* Contenido texto: título + subtítulo + párrafo */
 .about__content {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 2rem 0;
-  min-height: 120px;
 }
 
-/* Título grande transparente (watermark) - capa de fondo */
-.about__watermark {
-  position: absolute;
-  top: -0.3em;
-  left: 0;
+.about__title {
   font-family: "Outfit", "Inter", sans-serif;
   font-size: clamp(4rem, 12vw, 8rem);
   font-weight: 700;
   color: #35c8c1;
-  opacity: 0.40;
-  line-height: 0.9;
-  pointer-events: none;
-  z-index: 0;
+  margin: 0 0 0.25rem;
+  line-height: 1.1;
 }
 
-/* Subtítulo - solapado sobre el watermark */
 .about__subtitle {
-  position: absolute;
-  top: 0.6em;
-  left: 0;
-  z-index: 1;
   font-family: "Outfit", "Inter", sans-serif;
   font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 700;
+  font-weight: 600;
   color: #cd204c;
-  margin: 0;
+  margin: 0 0 1rem;
 }
 
 .about__text {
-  position: relative;
-  z-index: 1;
   font-family: "Outfit", "Inter", sans-serif;
   color: #000000;
-  margin: 4rem 0 0 0;
+  margin: 1.5rem 0 0;
   line-height: 1.6;
   font-size: clamp(1.16rem, 2.08vw, 1.44rem);
 }
@@ -980,10 +970,6 @@ img {
     height: 330px;
   }
 
-  .about__watermark {
-    font-size: clamp(3rem, 15vw, 5rem);
-  }
-
   .about__content {
     padding: 1rem 0;
   }
@@ -996,33 +982,22 @@ img {
 }
 
 .services__header {
-  position: relative;
-  min-height: 80px;
   padding: 2rem 0 0 0;
 }
 
-.services__watermark {
-  position: absolute;
-  top: -0.3em;
-  left: 0;
+.services__title {
   font-family: "Outfit", "Inter", sans-serif;
   font-size: clamp(4rem, 12vw, 8rem);
   font-weight: 700;
   color: #ebde62;
-  opacity: 0.85;
-  line-height: 0.9;
-  pointer-events: none;
-  z-index: 0;
+  margin: 0 0 0.25rem;
+  line-height: 1.1;
 }
 
 .services__subtitle {
-  position: absolute;
-  top: 0.6em;
-  left: 0;
-  z-index: 1;
   font-family: "Outfit", "Inter", sans-serif;
   font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 700;
+  font-weight: 600;
   color: #cd204c;
   margin: 0;
 }
@@ -1037,22 +1012,13 @@ img {
 
 /* Carrusel infinito de iconos de servicios */
 .services-carousel {
+  position: relative;
   overflow: hidden;
   padding: 2rem 0 2.5rem;
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 8%,
-    black 92%,
-    transparent
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 8%,
-    black 92%,
-    transparent
-  );
+}
+
+.services-carousel--has-selection .services-carousel__track {
+  transition: transform 0.4s ease;
 }
 
 .services-carousel__track {
@@ -1060,8 +1026,8 @@ img {
   gap: 3rem;
   width: max-content;
   animation: servicesCarouselScroll 35s linear infinite;
+  transition: opacity 0.3s ease;
 }
-
 
 .services-carousel__item {
   display: flex;
@@ -1070,6 +1036,45 @@ img {
   gap: 0.75rem;
   flex-shrink: 0;
   min-width: 140px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  font: inherit;
+  color: inherit;
+}
+
+.services-carousel__item--selected .services-carousel__icon {
+  color: #ebde62;
+  transform: scale(1.2);
+}
+
+/* Descripción debajo del carrusel al seleccionar */
+.services-carousel__description {
+  padding: 1.5rem 2rem 0;
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+  animation: servicesDescriptionIn 0.35s ease-out;
+}
+
+@keyframes servicesDescriptionIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.services-carousel__description p {
+  font-family: "Outfit", "Inter", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: white;
+  margin: 0;
 }
 
 .services-carousel__label {
@@ -1104,12 +1109,6 @@ img {
   }
   100% {
     transform: translateX(-50%);
-  }
-}
-
-@media (max-width: 767px) {
-  .services__watermark {
-    font-size: clamp(3rem, 15vw, 5rem);
   }
 }
 
@@ -1158,35 +1157,24 @@ img {
   background: var(--surface);
 }
 
-/* Título estilo About: watermark + subtítulo solapados */
+/* Título + subtítulo */
 .portfolio__header {
-  position: relative;
-  margin-bottom: 1.25rem;
-  min-height: 100px;
+  margin-bottom: 1.5rem;
 }
 
-.portfolio__watermark {
-  position: absolute;
-  top: -0.3em;
-  left: 0;
+.portfolio__title {
   font-family: "Outfit", "Inter", sans-serif;
   font-size: clamp(4rem, 12vw, 8rem);
   font-weight: 700;
   color: #cd204c;
-  opacity: 0.40;
-  line-height: 0.9;
-  pointer-events: none;
-  z-index: 0;
+  margin: 0 0 0.25rem;
+  line-height: 1.1;
 }
 
 .portfolio__subtitle {
-  position: absolute;
-  top: 0.6em;
-  left: 0;
-  z-index: 1;
   font-family: "Outfit", "Inter", sans-serif;
   font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 700;
+  font-weight: 600;
   color: #ebde62;
   margin: 0;
 }
@@ -1422,6 +1410,7 @@ img {
   position: relative;
   background: #35c8c1;
   padding-top: calc(5rem + 63px);
+  padding-bottom: 4rem;
 }
 
 .custom-shape-divider-top-1771422257 {
@@ -1444,60 +1433,131 @@ img {
   fill: #F8FAFC;
 }
 
+.contact__container {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+  padding: 0 4%;
+}
+
+/* Header: título + subtítulo */
 .contact__header {
-  position: relative;
-  min-height: 120px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin-bottom: 2.5rem;
 }
 
-.contact__watermark {
-  position: absolute;
-  top: -0.3em;
-  left: 50%;
-  transform: translateX(-50%);
+.contact__title {
   font-family: "Outfit", "Inter", sans-serif;
   font-size: clamp(4rem, 12vw, 8rem);
   font-weight: 700;
-  font-weight: 700;
   color: #ebde62;
-  opacity: 0.85;
-  line-height: 0.9;
-  pointer-events: none;
-  z-index: 0;
+  margin: 0 0 0.25rem;
+  line-height: 1.1;
 }
 
 .contact__subtitle {
-  position: absolute;
-  top: 0.6em;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
   font-family: "Outfit", "Inter", sans-serif;
   font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 700;
+  font-weight: 600;
   color: #cd204c;
   margin: 0;
   max-width: 90%;
-  text-align: center;
-  white-space: nowrap;
 }
 
-.contact-map {
+/* Layout dos columnas: tarjetas + mapa */
+.contact__content {
   display: grid;
-  gap: 1.5rem;
-  justify-items: center;
-  text-align: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.contact__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Tarjetas de contacto */
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.contact-card__icon {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.contact-card__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.contact-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.contact-card__label {
+  font-family: "Outfit", "Inter", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.contact-card__value {
+  font-family: "Outfit", "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.contact-card__value--link {
+  color: #25d366;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-card__value--link:hover {
+  color: #128c7e;
+}
+
+/* Mapa */
+.contact__map-wrap {
+  min-height: 0;
 }
 
 .map-frame {
-  width: min(900px, 92vw);
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.12);
 }
 
 .map-frame--gradient-border {
@@ -1529,13 +1589,24 @@ img {
   position: relative;
   z-index: 1;
   width: 100%;
-  height: 450px;
+  height: 100%;
+  min-height: 400px;
   display: block;
 }
 
 @media (max-width: 767px) {
-  .contact__watermark {
-    font-size: clamp(3rem, 15vw, 5rem);
+  .contact__content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact__map-wrap {
+    min-height: 350px;
+  }
+
+  .map-frame,
+  .map-frame iframe {
+    min-height: 350px;
   }
 }
 

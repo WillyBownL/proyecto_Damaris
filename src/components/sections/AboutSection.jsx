@@ -28,8 +28,8 @@ export default function AboutSection() {
           </div>
         </div>
         <div className="about__content">
-          <span className="about__watermark" aria-hidden="true">Que somos</span>
-          <h2 className="about__subtitle">Nuestro negocio</h2>
+          <h2 className="about__title">Que somos</h2>
+          <p className="about__subtitle">Nuestro negocio</p>
           <p className="about__text">
           Todo comenzó el 04 de marzo de 2020, cuando quise hacer un estampado especial para mi hija. Lo que empezó como algo pequeño y lleno de amor, terminó convirtiéndose en este hermoso emprendimiento.
           <br/>Soy una mujer emprendedora que decidió transformar su creatividad en un proyecto real. Desde entonces realizo trabajos personalizados, poniendo dedicación en cada detalle y buscando siempre que cada diseño tenga significado.
